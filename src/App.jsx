@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
@@ -27,22 +28,38 @@ function App() {
 
         <Route
           path="/movies"
-          element={<Movies />}
+          element={
+            <ProtectedRoute>
+              <Movies />
+            </ProtectedRoute>
+          }
         />
 
         <Route
           path="/movie/:id"
-          element={<MovieDetail />}
+          element={
+            <ProtectedRoute>
+              <MovieDetail />
+            </ProtectedRoute>
+          }
         />
 
         <Route
           path="/favorites"
-          element={<Favorites />}
+          element={
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+          }
         />
 
         <Route
           path="/profile"
-          element={<Profile />}
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
         />
 
         <Route

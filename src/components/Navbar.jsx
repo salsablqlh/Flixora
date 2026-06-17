@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Navbar() {
+    const { isLoggedIn, logout } = useContext(AuthContext);
+
     return (
         <nav
            style={{
@@ -33,6 +37,12 @@ function Navbar() {
             <Link to="/register" style={{ color: "white" }}>
                 Register
             </Link>
+
+            {isLoggedIn && (
+                <button onClick={logout}>
+                    Logout
+                </button>
+            )}
         </nav>
     );
 }
