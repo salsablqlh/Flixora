@@ -13,3 +13,13 @@ export async function getPopularMovies() {
 
     return data.results;
 }
+
+export async function getMovieDetail(id) {
+    const response = await fetch(
+        `${BASE_URL}/movie/${id}?api_key=${API_KEY}`
+    );
+
+    const data = await response.json();
+
+    return data;
+}

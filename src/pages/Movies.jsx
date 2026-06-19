@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPopularMovies } from "../services/tmdb";
+import { Link } from "react-router-dom";
 
 function Movies() {
   const [movies, setMovies] = useState([]);
@@ -21,7 +22,9 @@ function Movies() {
 
       {movies.map((movie) => (
         <div key={movie.id}>
-          <h3>{movie.title}</h3>
+          <Link to={`/movie/${movie.id}`}>
+            <h3>{movie.title}</h3>
+          </Link>
 
           <img
             src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
