@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { getPopularMovies } from "../services/tmdb";
+import { getPopularMovies, searchMovies } from "../services/tmdb";
 import { Link } from "react-router-dom";
 
 function Movies() {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     async function fetchMovies() {
@@ -16,8 +17,44 @@ function Movies() {
     fetchMovies();
   }, [])
 
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) {
+      const popularMovies =
+        await getPopularMovies();
+
+      setMovies(popularMovies);
+      return;
+    }
+
+    const results = 
+      await searchMovies(searchTerm);
+
+    setMovies(results);
+  };
+
   return (
     <div>
+      <div>
+        <input
+          type="text"
+          placeholder="Search movie..."
+          value={searchTerm}
+          onChange={(e) =>
+            setSearchTerm(e.target.value)
+          }
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch();
+            }
+          }}
+        />
+
+        <button onClick={handleSearch}>
+          Search
+        </button>
+      </div>
+
+      <br />
       <h1>Popular Movies</h1>
 
       {movies.map((movie) => (
