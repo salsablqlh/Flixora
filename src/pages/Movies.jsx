@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPopularMovies, searchMovies } from "../services/tmdb";
 import { Link } from "react-router-dom";
+import "./Movies.css";
 
 function Movies() {
   const [movies, setMovies] = useState([]);
@@ -33,8 +34,12 @@ function Movies() {
   };
 
   return (
-    <div>
-      <div>
+    <div className="movies-page">
+      <h1 className="movies-titel">
+        🎬 Discover Movies
+      </h1>
+
+      <div className="search-container">
         <input
           type="text"
           placeholder="Search movie..."
@@ -54,28 +59,33 @@ function Movies() {
         </button>
       </div>
 
-      <br />
-      <h1>Popular Movies</h1>
+      <div className="movie-grid">
+        {movies.map((movie) => (
+          <div
+            className="movie-card"
+            key={movie.id}
+          >
+            <Link to={`/movie/${movie.id}`}>
 
-      {movies.map((movie) => (
-        <div key={movie.id}>
-          <Link to={`/movie/${movie.id}`}>
-            <h3>{movie.title}</h3>
-          </Link>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+              />
 
-          <img
-            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-            alt={movie.title}
-          />
+              <div className="movie-info">
 
-          <p>
-            Rating:
-            {movie.vote_average}
-          </p>
+                <div className="movie-title">
+                  {movie.title}
+                </div>
 
-          <hr />
-        </div>
-      ))}
+                <div className="rating">
+                  ⭐ {movie.vote_average}
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
