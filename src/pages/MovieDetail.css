@@ -1,0 +1,135 @@
+.detail-page {
+    min-height: 100vh;
+    padding: 40px;
+    background: linear-gradient(
+        135deg,
+        #0f0f1a,
+        #17172b
+    );
+    color: white;
+}
+
+.detail-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.detail-poster {
+    width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: 0.3s;
+}
+
+.detail-poster:hover {
+    transform: scale(1.03);
+}
+
+.detail-content {
+    flex: 1;
+}
+
+.detail-title {
+    font-size: 56px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.detail-tagline {
+    color: #ff70b8;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.detail-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.meta-box {
+    background: #23234a;
+    color: white;
+    padding: 0px 20px;
+    border-radius: 14px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+
+    width: 180px;
+    height: 60px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+.meta-box span {
+    display: flex;
+    align-items: center;
+}
+
+.rating {
+    color: #ffd54f;
+}
+
+.release {
+    color: #7dd3fc;
+}
+
+.runtime {
+    color: #c4b5fd;
+}
+
+.favorite-btn {
+    background: linear-gradient(
+        135deg, 
+        #ff70b8,
+        #ff4f9a
+    );
+
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: fit-content;
+}
+
+.favorite-btn:hover {
+    transform: translateY(-3px);
+}
+
+.overview {
+    margin-top: 30px;
+    line-height: 1.9;
+    font-size: 18px;
+    color: #d6d6e7;
+    max-width: 900px;
+}
+
+@media (max-width: 768px) {
+    .detail-container {
+        flex-direction: column;
+    }
+
+    .detail-poster {
+        width: 100%;
+    }
+
+    .detail-title {
+        font-size: 38px;
+    }
+
+    .detail-meta {
+        flex-direction: column;
+    }
+}
+

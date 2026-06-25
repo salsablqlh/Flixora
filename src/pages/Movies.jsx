@@ -12,7 +12,7 @@ function Movies() {
       const data =
         await getPopularMovies();
 
-      setMovies(data);
+      setMovies(data.slice(0, 6));
     }
 
     fetchMovies();

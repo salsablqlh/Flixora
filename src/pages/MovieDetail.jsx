@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { getMovieDetail } from "../services/tmdb";
+import "./MovieDetail.css";
+import { toast } from "react-toastify";
 
 function MovieDetail() {
   const { id } = useParams();
@@ -38,48 +39,76 @@ function MovieDetail() {
       );
 
     if (alreadyExists) {
-      alert("Movie already in favorites");
+      toast.warning(
+        "Movie already in favorites!"
+      );
       return;
     }
 
-    favorites.push(movie);
+    const updated = [...favorites, movie,];
 
     localStorage.setItem(
       "favorites",
-      JSON.stringify(favorites)
+      JSON.stringify(updated)
     );
 
-    alert("Added to favorites");
-  }
+    toast.success("Added to favorites!");
+  };
 
   return (
-    <div>
-      <h1>{movie.title}</h1>
+    <div className="detail-page">
 
-      <img
-        src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-        alt={movie.title}
-      />
+      <div className="detail-container">
 
-      <br />
-      <br />
+        <img
+          className="detail-poster"
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={movie.title}
+        />
 
-      <button onClick={addToFavorites}>
-        Add to Favorites
-      </button>
+        <div className="detail-content">
+          <h1 className="detail-title">
+            {movie.title}
+          </h1>
 
-      <p>
-        Rating:
-        {movie.vote_average}
-      </p>
+          <p className="detail-tagline">
+            {movie.tagline}
+          </p>
 
-      <p>
-        Release Date: {movie.release_date}
-      </p>
+          <div className="detail-meta">
 
-      <p>
-        {movie.overview}
-      </p>
+            <div className="meta-box rating">
+              <span>⭐</span>
+              <span>{movie.vote_average}</span>
+            </div>
+
+            <div className="meta-box release">
+              <span>📅</span>
+              <span>{movie.release_date}</span>
+            </div>
+
+            <div className="meta-box runtime">
+              <span>⏱️</span>
+              <span>{movie.runtime} min</span>
+            </div>
+
+          </div>
+
+          <button 
+            className="favorite-btn"
+            onClick={addToFavorites}
+          >
+            ❤️ Add To Favorites
+          </button>
+
+          <p className="overview">
+            {movie.overview}
+          </p>
+
+        </div>
+
+      </div>
+      
     </div>
   );
 }
