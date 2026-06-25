@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 import Home from "./pages/Home";
@@ -72,6 +73,7 @@ function App() {
           element={<Register />}
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

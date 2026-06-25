@@ -6,13 +6,17 @@ import "./Movies.css";
 function Movies() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchMovies() {
+      setLoading(true); 
+
       const data =
         await getPopularMovies();
 
-      setMovies(data.slice(0, 6));
+      setMovies(data);
+      setLoading(false);
     }
 
     fetchMovies();
@@ -32,6 +36,14 @@ function Movies() {
 
     setMovies(results);
   };
+
+  if (loading) {
+    return (
+      <div className="loading">
+        🍿Loading movies...
+      </div>
+    );
+  }
 
   return (
     <div className="movies-page">
@@ -60,6 +72,12 @@ function Movies() {
       </div>
 
       <div className="movie-grid">
+        {movies.length === 0 && (
+          <div className="empty-search">
+            🎬No movies found
+          </div>
+        )}
+        
         {movies.map((movie) => (
           <div
             className="movie-card"

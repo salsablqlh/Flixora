@@ -7,25 +7,46 @@ import { toast } from "react-toastify";
 function MovieDetail() {
   const { id } = useParams();
 
-  const [movie, setMovie] =
-    useState(null);
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     async function fetchMovie() {
+      setLoading(true);
+
       const data = 
         await getMovieDetail(id);
-
-      console.log(data);
       
       setMovie(data);
+
+      const favorites =
+        JSON.parse(
+          localStorage.getItem("favorites")
+        ) || [];
+
+      const exists =
+        favorites.some(
+          (item) => item.id === data.id
+        );
+      setIsFavorite(exists);
+      setLoading(false);
     }
 
     fetchMovie();
   }, [id]);
 
-  if (!movie) {
-    return <h2>Loading...</h2>;
+  if (loading) {
+    return (
+      <div className="loading">
+        🎬Loading movie...
+      </div>
+    );
   } 
+  
+  if (!movie) {
+    return null;
+  }
 
   const addToFavorites = () => {
     const favorites =
@@ -44,6 +65,8 @@ function MovieDetail() {
       );
       return;
     }
+
+    setIsFavorite(true);
 
     const updated = [...favorites, movie,];
 
@@ -98,7 +121,9 @@ function MovieDetail() {
             className="favorite-btn"
             onClick={addToFavorites}
           >
-            ❤️ Add To Favorites
+            {isFavorite
+              ? "❤️Added"
+              : "🤍Add To Favorites"}
           </button>
 
           <p className="overview">

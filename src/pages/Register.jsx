@@ -1,20 +1,32 @@
 import { useState } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "./Login.css";
 
 function Register() {
     const navigate = useNavigate();
 
-    const [username, setUsername] =
-      useState("");
+    const [username, setUsername] = useState("");
+
+    const [email, setEmail] = useState("");
     
-    const [password, setPassword] =
-      useState("");
+    const [password, setPassword] = useState("");
 
     const handleRegister = (e) => {
         e.preventDefault();
 
+        if (
+            !username ||
+            !email ||
+            !password
+        ){
+            toast.error("Please fill all fields");
+            return;
+        }
+
         const user = {
             username,
+            email,
             password,
         };
 
@@ -23,42 +35,74 @@ function Register() {
             JSON.stringify(user)
         );
 
-        alert("Register berhasil!");
+        toast.success("🎉 Registration successful!");
 
-        navigate("/login");
+        setTimeout(() => {
+            navigate("/login");
+        }, 1500);
     };
 
     return (
-        <div>
-            <h1>Register</h1>
+        <div className="auth-page">
 
-            <form onSubmit={handleRegister}>
-                <input
-                  type="text"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)
-                  }
-                />
+            <div className="auth-card">
+                <h1 className="auth-title">
+                    ✨Create Account
+                </h1>
 
-                <br />
-                <br />
+                <p className="auth-subtitle">
+                    Join Flixora today
+                </p>
 
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)
-                  }
-                />
+                <form
+                    className="auth-form"
+                    onSubmit={handleRegister}
+                >
+        
+                    <input
+                        className="auth-input"
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)
+                        }
+                    />
 
-                <br />
-                <br />
+                    <input 
+                        className="auth-input"
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) =>
+                            setEmail(e.target.value)
+                        }
+                    />
 
-                <button type="submit">
-                    Register
-                </button>
-            </form>
+                    <input
+                        className="auth-input"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => 
+                            setPassword(e.target.value)
+                        }
+                    />
+
+                    <button 
+                        className="auth-btn"
+                        type="submit"
+                    >
+                        Register
+                    </button>
+
+                    <p className="auth-link">
+                        Already have an account?
+                        <Link to="/login">
+                            Login
+                        </Link>
+                    </p>
+                </form>
+            </div>
         </div>
     );
 }

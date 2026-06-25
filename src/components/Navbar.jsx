@@ -2,9 +2,14 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import "./Navbar.css"
+import { toast } from "react-toastify";
 
 function Navbar() {
     const { isLoggedIn, logout } = useContext(AuthContext);
+    const handleLogout = () => {
+        logout();
+        toast.info( "👋Logged out successfully");
+    };
 
     return (
         <nav className="navbar">
@@ -26,7 +31,7 @@ function Navbar() {
                 ) : (
                     <button
                         className="logout-btn"
-                        onClick={logout}
+                        onClick={handleLogout}
                     >
                         Logout
                     </button>

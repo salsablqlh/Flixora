@@ -4,7 +4,7 @@ function Profile() {
     const user =
       JSON.parse(
         localStorage.getItem("currentUser")
-      );
+      ) || {};
 
     const favorites =
       JSON.parse(
@@ -19,17 +19,15 @@ function Profile() {
                 </div>
 
                 <h2 className="profile-name">
-                    {user?.username}
+                    {user.username}
                 </h2>
 
                 <p className="profile-email">
-                    {user?.email}
+                    {user.email}
                 </p>
 
                 <div className="profile-stat">
-                     ❤️ Favorite Movies:
-                     {" "}
-                     {favorites.length}  
+                     ❤️ Favorite Movies: {favorites.length}  
                 </div>
             </div>
         </div>

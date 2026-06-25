@@ -68,3 +68,25 @@
     color: gold;
     margin-top: 8px;
 }
+
+.loading {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.empty-search {
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    padding: 60px;
+    font-weight: 600;
+}

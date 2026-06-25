@@ -35,3 +35,26 @@
     padding: 15px;
     border-radius: 12px;
 }
+
+.profile-name {
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 15px 0 5px;
+}
+
+.profile-email {
+    color: #bdbdd7;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.profile-stat {
+    width: 100%;
+    background: #2a2d63;
+    color: white;
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 18px;
+}

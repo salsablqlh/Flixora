@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
+import "./Login.css";
 
 function Login() {
     const navigate = useNavigate();
@@ -9,11 +10,9 @@ function Login() {
     const { login } =
       useContext(AuthContext);
 
-    const [username, setUsername] =
-      useState("");
+    const [email, setEmail] = useState("");
 
-    const [password, setPassword] =
-      useState("");
+    const [password, setPassword] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -24,50 +23,79 @@ function Login() {
         
         if (
             user &&
-            username === user.username &&
+            email === user.email &&
             password === user.password
         ) {
-            login();
-            alert("Login berhasil");
-            navigate("/");
+           localStorage.setItem(
+                "currentUser",
+                JSON.stringify(user)
+           );
+
+           login();
+
+           toast.success("🎉 Login successful!");
+           
+           setTimeout(() => {
+            navigate("/")
+           }, 1500);
+    
         } else {
-            alert("Username atau password salah");
+            toast.error("Invalid email or password!");
         }
     };
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="auth-page">
 
-            <form onSubmit={handleLogin}>
-                <input
-                  type="text"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)
-                  }
-                />
+            <div className="auth-card">
+                <h1 className="auth-title">
+                    🍿Welcome Back
+                </h1>
 
-                <br />
-                <br />
+                <p className="auth-subtitle">
+                    Login to continue exploring movies
+                </p>
 
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)
-                  }
-                />
+                <form 
+                    className="auth-form"
+                    onSubmit={handleLogin}
+                >
 
-                <br />
-                <br />
+                    <input 
+                        className="auth-input"
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) =>
+                            setEmail(e.target.value)
+                        }
+                    />
 
-                <button type="submit">
-                    Login
-                </button>
-            </form>
+                    <input
+                        className="auth-input"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)
+                        }
+                    />
+
+                    <button 
+                        className="auth-btn"
+                        type="submit"
+                    >
+                        Login
+                    </button>
+
+                    <p className="auth-link">
+                        Don't have an account?
+                        <Link to="/register">
+                            Register
+                        </Link>
+                    </p>
+                </form>
+            </div>
         </div>
     );
-
 }
 export default Login;
