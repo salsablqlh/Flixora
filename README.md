@@ -80,7 +80,7 @@ src
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/USERNAME/flixora.git
+git clone https://github.com/salsablqlh/Flixora
 ```
 
 ### 2. Masuk ke Folder Project
@@ -98,7 +98,7 @@ npm install
 ### 4. Buat File `.env`
 
 ```env
-VITE_TMDB_API_KEY=API_KEY_KAMU
+VITE_TMDB_API_KEY=4afd7fdd067c84fd36ff557054903fbe
 ```
 
 ### 5. Jalankan Project
@@ -113,18 +113,18 @@ npm run dev
 
 Aplikasi dapat diakses melalui:
 
-https://NAMA-PROJECT.vercel.app
+https://flixora-eosin.vercel.app/
 
 ---
 
 ## 👩‍💻 Pengembang
 
-**Aqilah**
+**Salsabiil Aqiilah**
 
-GitHub : https://github.com/USERNAME
+GitHub : https://github.com/salsablqlh
 
 ---
 
 ## 📝 Lisensi
 
-Project ini dibuat untuk keperluan pembelajaran dan pengembangan portofolio.
+Project ini dibuat untuk memenuhi project capstone open recruitment neotelemetri 2026
