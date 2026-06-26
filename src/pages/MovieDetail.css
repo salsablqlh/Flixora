@@ -133,3 +133,20 @@
     }
 }
 
+.genres {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.genre-tag {
+    background: #ff5ca8;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(255, 92, 168, 0.3);
+}
+

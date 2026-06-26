@@ -17,6 +17,8 @@ function MovieDetail() {
 
       const data = 
         await getMovieDetail(id);
+
+      console.log(data);
       
       setMovie(data);
 
@@ -97,6 +99,17 @@ function MovieDetail() {
           <p className="detail-tagline">
             {movie.tagline}
           </p>
+
+          <div className="genres">
+            {movie.genres?.map((genre) => (
+              <span
+                key={genre.id}
+                className="genre-tag"
+              >
+                {genre.name}
+              </span>
+            ))}
+          </div>
 
           <div className="detail-meta">
 

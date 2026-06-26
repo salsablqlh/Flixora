@@ -15,6 +15,7 @@ import Favorites from "./pages/Favorites";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -71,6 +72,11 @@ function App() {
         <Route
           path="/register"
           element={<Register />}
+        />
+
+        <Route
+          path="*"
+          element={<NotFound />}
         />
       </Routes>
       <Footer />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPopularMovies } from "../services/tmdb";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 function Home() {
 
@@ -41,17 +42,23 @@ function Home() {
 
         <div className="featured-grid">
           {movies.map((movie) => (
-            <div
-                className="featured-card"
-                key={movie.id}
+            <Link 
+              to={`/movie/${movie.id}`}
+              className="featured-link"
+              key={movie.id}
             >
-                <img
-                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                  alt={movie.title}
-                />
+              <div
+                  className="featured-card"
+                  key={movie.id}
+              >
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                    alt={movie.title}
+                  />
 
-                <h3>{movie.title}</h3>
-            </div>
+                  <h3>{movie.title}</h3>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
