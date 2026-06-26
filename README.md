@@ -98,7 +98,7 @@ npm install
 ### 4. Buat File `.env`
 
 ```env
-VITE_TMDB_API_KEY=4afd7fdd067c84fd36ff557054903fbe
+VITE_TMDB_API_KEY=YOUR_TMDB_API_KEY
 ```
 
 ### 5. Jalankan Project
