@@ -32,9 +32,9 @@ function Home() {
       </div>
 
       <div className="hero-buttons">
-        <a href="/movies">
+        <Link to="/movies">
             <button>🎬 Explore Movies</button>
-        </a>
+        </Link>
       </div>
 
       <section className="featured">
