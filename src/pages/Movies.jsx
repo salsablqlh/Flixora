@@ -47,7 +47,7 @@ function Movies() {
 
   return (
     <div className="movies-page">
-      <h1 className="movies-titel">
+      <h1 className="movies-title">
         🎬 Discover Movies
       </h1>
 

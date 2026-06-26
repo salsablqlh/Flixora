@@ -21,7 +21,7 @@
 }
 
 .hero::before {
-    content: "";
+   content: "";
     position: absolute;
     inset: 0;
     background: url("https://image.tmdb.org/t/p/original/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg");
@@ -101,8 +101,10 @@
 
 .featured {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: -70px auto 0;
     padding: 0 40px 80px;
+    position: relative;
+    z-index: 2;
 }
 
 .featured h2 {

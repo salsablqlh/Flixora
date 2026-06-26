@@ -1,22 +1,23 @@
 .favorites-page {
-    min-height: 100vh;
     background: #0f1020;
     color: white;
-    padding: 40px;
+    padding: 100px 40px 80px;
 }
 
 .favorites-title {
     text-align: center;
-    font-size: 40px;
-    margin-bottom: 50px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 35px;
 }
 
 .favorites-card {
     background: #1e1b3a;
     border-radius: 16px;
     overflow: hidden;
-    transition: 0.3s;
-    width: 220px;
+    transition: .3s;
+    width: 250px;
+    transition: .25s ease;
 }
 
 .favorites-card:hover {
@@ -24,8 +25,8 @@
 }
 
 .favorites-card img {
-    width: 220px;
-    height: 260px;
+    width: 100%;
+    height: 300px;
     aspect-ratio: 2 / 3;
     object-fit: cover;
     display: block;
@@ -34,24 +35,26 @@
 .favorites-grid {
     display: grid;
     grid-template-columns: repeat(
-        auto-fill,
-        minmax(250px, 1fr)
+        auto-fit, 220px
     );
-    gap: 25px;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 40px;
 }
 
 .favorites-info {
-    padding: 15px;
+    padding: 18px;
 }
 
 .favorites-info h3 {
-    font-size: 18px;
-    margin-bottom: 12px;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .favorites-rating {
     color: #ffd54f;
-    margin-top: 8px;
+    margin: 8px 0 15px;
+    font-size: 18px;
 }
 
 .remove-btn {
@@ -63,10 +66,12 @@
     border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
+    transition: .3s;
 }
 
 .remove-btn:hover {
     opacity: 0.9;
+    background: #ff3e96;
 }
 
 .empty-state {
